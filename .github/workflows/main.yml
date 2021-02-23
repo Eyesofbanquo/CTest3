@@ -1,0 +1,17 @@
+name: Testing
+
+on: pull_request
+
+jobs:
+  test:
+    name: Unit Tests
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Let's do it 😎
+        run: |
+          cd CTest3
+          xcodebuild clean test -project CTest3.xcodeproj -scheme CTest3 -destination 'platform=iOS Simulator,name=iPhone 11,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
