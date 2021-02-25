@@ -14,19 +14,21 @@ struct Throwaway: Decodable {
 
 final class iTunesSearchViewModel: iTunesSearchTransformable {
   
-  lazy var network: Network = Network()
+  private var network: Network
+  
+  init(network: Network = Network()) {
+    self.network = network
+  }
   
   func transform(input: iTunesSearchViewInput) -> ITunesSearchViewOutput {
     
-    let network = Network()
-    
     let onAppear = input.onAppear.map { _ -> iTunesSearchState in
       return .idle
-    }.eraseToAnyPublisher()
+    }.receive(on: RunLoop.main).eraseToAnyPublisher()
     
     let onSearch = input.onSearch
-      .compactMap { value -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>? in
-      return network.request(forArtist: value)
+      .compactMap { [weak self] value -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>? in
+        return self?.network.request(forArtist: value)
       }
       .switchToLatest()
       .tryMap { element -> Data in
@@ -37,9 +39,10 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
         return element.data
       }
       .receive(on: DispatchQueue.main)
-      .decode(type: Throwaway.self, decoder: JSONDecoder())
-      .map { t -> iTunesSearchState in
-        return .idle
+      .decode(type: ArtistResult.self, decoder: JSONDecoder())
+      .map { decodedResponse -> iTunesSearchState in
+        let artists = decodedResponse.results
+        return .results(artists: artists)
       }
       .replaceError(with: .error(error: NSError()))
       .eraseToAnyPublisher()

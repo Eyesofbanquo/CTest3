@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct ArtistResult: Decodable {
+  var resultCount: Int
+  var results: [Artist]
+}
+
 struct Artist: Decodable {
   var artistName: String?
   var trackName: String?
@@ -24,8 +29,7 @@ struct Artist: Decodable {
 
 extension Artist {
   init(from decoder: Decoder) throws {
-    let mainContainer = try decoder.container(keyedBy: ContainerCodingKeys.self)
-    let resultsContainer = try mainContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .results)
+    let resultsContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.artistName = try resultsContainer.decodeIfPresent(String.self, forKey: .artistName)
     self.trackName = try resultsContainer.decodeIfPresent(String.self, forKey: .trackName)

@@ -7,7 +7,20 @@
 
 import Foundation
 
-enum iTunesSearchState {
+enum iTunesSearchState: Equatable {
+  static func == (lhs: iTunesSearchState, rhs: iTunesSearchState) -> Bool {
+    switch (lhs, rhs) {
+      case (.idle, .idle): return true
+      case (.loading, .loading): return true
+      case (.error(let lError), .error(let rError)):
+        return true
+      case (.results(let lResults), .results(let rResults)):
+        return true
+      default: return false
+    }
+  }
+  
+  
   /// The default state for the `iTunesSearchController`. This is when no action has been performed.
   case idle
   
@@ -18,5 +31,6 @@ enum iTunesSearchState {
   case error(error: Error)
   
   /// This is when the `iTunesSearchController` has finished searching.
-  case results(artists: [String])
+  case results(artists: [Artist])
+
 }

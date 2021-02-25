@@ -22,6 +22,9 @@
 		336F023425E5B92C00DA124E /* iTunesSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F023325E5B92C00DA124E /* iTunesSearchViewModel.swift */; };
 		336F023A25E79CFA00DA124E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F023925E79CFA00DA124E /* Network.swift */; };
 		336F024225E79E2500DA124E /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024125E79E2500DA124E /* Artist.swift */; };
+		336F024825E7A23C00DA124E /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024725E7A23C00DA124E /* MockURLProtocol.swift */; };
+		336F025025E7A28400DA124E /* iTunesSearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */; };
+		336F025525E7A37200DA124E /* MockInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F025425E7A37200DA124E /* MockInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		336F023325E5B92C00DA124E /* iTunesSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModel.swift; sourceTree = "<group>"; };
 		336F023925E79CFA00DA124E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		336F024125E79E2500DA124E /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		336F024725E7A23C00DA124E /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModelTests.swift; sourceTree = "<group>"; };
+		336F025425E7A37200DA124E /* MockInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +136,10 @@
 		336F01DE25E5880E00DA124E /* CTest3Tests */ = {
 			isa = PBXGroup;
 			children = (
+				336F024625E7A16900DA124E /* Mocks */,
 				336F01DF25E5880E00DA124E /* CTest3Tests.swift */,
 				336F01E125E5880E00DA124E /* Info.plist */,
+				336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */,
 			);
 			path = CTest3Tests;
 			sourceTree = "<group>";
@@ -211,6 +219,15 @@
 				336F023925E79CFA00DA124E /* Network.swift */,
 			);
 			path = networking;
+			sourceTree = "<group>";
+		};
+		336F024625E7A16900DA124E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				336F024725E7A23C00DA124E /* MockURLProtocol.swift */,
+				336F025425E7A37200DA124E /* MockInput.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,7 +377,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336F025525E7A37200DA124E /* MockInput.swift in Sources */,
+				336F025025E7A28400DA124E /* iTunesSearchViewModelTests.swift in Sources */,
 				336F01E025E5880E00DA124E /* CTest3Tests.swift in Sources */,
+				336F024825E7A23C00DA124E /* MockURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
