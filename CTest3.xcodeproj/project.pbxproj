@@ -19,6 +19,9 @@
 		336F021825E5AE6200DA124E /* iTunesSearchViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F021725E5AE6200DA124E /* iTunesSearchViewOutput.swift */; };
 		336F021E25E5AF6200DA124E /* iTunesSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F021D25E5AF6200DA124E /* iTunesSearchState.swift */; };
 		336F022625E5B35700DA124E /* iTunesSearchUseCaseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F022525E5B35700DA124E /* iTunesSearchUseCaseable.swift */; };
+		336F023425E5B92C00DA124E /* iTunesSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F023325E5B92C00DA124E /* iTunesSearchViewModel.swift */; };
+		336F023A25E79CFA00DA124E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F023925E79CFA00DA124E /* Network.swift */; };
+		336F024225E79E2500DA124E /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024125E79E2500DA124E /* Artist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		336F021725E5AE6200DA124E /* iTunesSearchViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewOutput.swift; sourceTree = "<group>"; };
 		336F021D25E5AF6200DA124E /* iTunesSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchState.swift; sourceTree = "<group>"; };
 		336F022525E5B35700DA124E /* iTunesSearchUseCaseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchUseCaseable.swift; sourceTree = "<group>"; };
+		336F023325E5B92C00DA124E /* iTunesSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModel.swift; sourceTree = "<group>"; };
+		336F023925E79CFA00DA124E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		336F024125E79E2500DA124E /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		336F01FC25E5A97800DA124E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				336F024125E79E2500DA124E /* Artist.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 		336F01FE25E5A98000DA124E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				336F023325E5B92C00DA124E /* iTunesSearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 		336F01FF25E5A98B00DA124E /* need */ = {
 			isa = PBXGroup;
 			children = (
+				336F023825E79CED00DA124E /* networking */,
 				336F021C25E5AF4D00DA124E /* state */,
 				336F020025E5A98F00DA124E /* an-interface */,
 			);
@@ -194,6 +203,14 @@
 				336F021D25E5AF6200DA124E /* iTunesSearchState.swift */,
 			);
 			path = state;
+			sourceTree = "<group>";
+		};
+		336F023825E79CED00DA124E /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				336F023925E79CFA00DA124E /* Network.swift */,
+			);
+			path = networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,14 +342,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336F023A25E79CFA00DA124E /* Network.swift in Sources */,
 				336F021325E5AE5800DA124E /* iTunesSearchViewInput.swift in Sources */,
 				336F021825E5AE6200DA124E /* iTunesSearchViewOutput.swift in Sources */,
 				336F021E25E5AF6200DA124E /* iTunesSearchState.swift in Sources */,
+				336F023425E5B92C00DA124E /* iTunesSearchViewModel.swift in Sources */,
 				336F022625E5B35700DA124E /* iTunesSearchUseCaseable.swift in Sources */,
 				336F020E25E5AE4B00DA124E /* ITunesSearchTransformable.swift in Sources */,
 				336F01CD25E5880D00DA124E /* ViewController.swift in Sources */,
 				336F01C925E5880D00DA124E /* AppDelegate.swift in Sources */,
 				336F01CB25E5880D00DA124E /* SceneDelegate.swift in Sources */,
+				336F024225E79E2500DA124E /* Artist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
