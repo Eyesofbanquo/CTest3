@@ -68,7 +68,13 @@ final class iTunesViewController: UIViewController {
         switch state {
           case .idle: break
           case .results(artists: let artists):
-            self?.searchView.updateTable(artists: artists, animated: true)
+            self?.searchView.searchFinished()
+            
+            if self?.searchBar.text?.isEmpty == true, artists.isEmpty == false {
+              self?.searchView.updateTable(artists: [], animated: true)
+            } else {
+              self?.searchView.updateTable(artists: artists, animated: true)
+            }
           default: break
         }
       }.store(in: &cancellables)
@@ -92,11 +98,11 @@ extension iTunesViewController {
 extension iTunesViewController: UISearchBarDelegate {
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    searchView.searchBegan()
     onSearch.send(searchText)
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    
+    onAppear.send(())
   }
-  
 }

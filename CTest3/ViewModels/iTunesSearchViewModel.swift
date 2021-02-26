@@ -45,7 +45,7 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
       .filter { value in
         return !value.isEmpty
       }
-      .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+      .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
       .compactMap { [weak self] value -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>? in
         return self?.network.request(forArtist: value)
       }
@@ -70,10 +70,6 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
     
     let searchPublishers = Publishers.Merge(emptySearch, onSearch).eraseToAnyPublisher()
         
-    return Publishers.MergeMany(onAppear, searchPublishersce).eraseToAnyPublisher()
+    return Publishers.MergeMany(onAppear, searchPublishers).eraseToAnyPublisher()
   }
-}
-
-enum AError: Error {
-  case no
 }

@@ -38,8 +38,6 @@ struct Artist: Decodable, Hashable {
 extension Artist {
   init(from decoder: Decoder) throws {
     let resultsContainer = try decoder.container(keyedBy: CodingKeys.self)
-//
-//    self.id = try resultsContainer.decodeIfPresent(String.self, forKey: .id)
     
     self.artistName = try resultsContainer.decodeIfPresent(String.self, forKey: .artistName)
     self.trackName = try resultsContainer.decodeIfPresent(String.self, forKey: .trackName)

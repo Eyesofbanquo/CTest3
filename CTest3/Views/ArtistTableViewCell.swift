@@ -39,6 +39,9 @@ extension ArtistTableViewCell {
     artistNameLabel.numberOfLines = 2
     artistNameLabel.lineBreakMode = .byTruncatingTail
     
+    trackName.numberOfLines = 2
+    trackName.lineBreakMode = .byTruncatingTail
+    
     let mainStackView = UIStackView()
     mainStackView.translatesAutoresizingMaskIntoConstraints = false
     mainStackView.axis = .horizontal
