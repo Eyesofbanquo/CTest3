@@ -55,8 +55,14 @@ final class iTunesViewController: UIViewController {
     cancellables.removeAll()
     
     viewModel.transform(input: iTunesSearchViewInput(onAppear: onAppear.eraseToAnyPublisher(), onSearch: onSearch.eraseToAnyPublisher(), onLiveSearch: onLiveSearch.eraseToAnyPublisher(), onArtistSelection: onArtistSelection.eraseToAnyPublisher()))
-      .sink { state in
-        print(state)
+      .sink { [weak self] state in
+        
+        switch state {
+          case .idle: break
+          case .results(artists: let artists):
+            self?.searchView.updateTable(artists: artists, animated: true)
+          default: break
+        }
       }.store(in: &cancellables)
   }
 }

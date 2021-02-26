@@ -18,6 +18,7 @@ final class iTunesSearchView: UIView {
     super.init(frame: .zero)
     
     self.addSubview(tableView)
+    setupTableViewDataSource()
   }
   
   override func layoutSubviews() {
@@ -47,6 +48,10 @@ extension iTunesSearchView: iTunesSearchViewControllerDelegate {
     return tableView
   }
   
+  func setupTableViewDataSource() {
+    tableView.dataSource = dataSource
+  }
+  
   func layoutTableView() {
     NSLayoutConstraint.activate([
       tableView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
@@ -59,6 +64,10 @@ extension iTunesSearchView: iTunesSearchViewControllerDelegate {
   func makeDataSource() -> UITableViewDiffableDataSource<iTunesSearchViewSection, Artist> {
     return UITableViewDiffableDataSource(tableView: tableView) { tableView, indexPath, item -> UITableViewCell? in
       let cell = tableView.dequeueReusableCell(withIdentifier: ArtistTableViewCell.reuseIdentifier, for: indexPath)
+      
+      guard let artistCell = cell as? ArtistTableViewCell else { return cell }
+      
+      ArtistTableViewCell.configure(artistCell, forArtist: item)
       
       return cell
     }
