@@ -42,10 +42,10 @@ final class iTunesViewController: UIViewController {
     super.viewWillAppear(animated)
     
     NSLayoutConstraint.activate([
-                                  searchView.view.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
+                                  searchView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
                                   searchView.view.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
                                   searchView.view.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor),
-                                  searchView.view.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor)])
+                                  searchView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
     
     onSearch.send("Prince")
   }
