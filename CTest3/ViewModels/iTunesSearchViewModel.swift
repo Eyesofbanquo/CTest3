@@ -35,7 +35,7 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
       .filter { $0.isEmpty }
       .receive(on: RunLoop.main)
       .map { _ -> iTunesSearchState in
-        return .idle
+        return .results(artists: [])
       }
       .receive(on: RunLoop.main)
       .eraseToAnyPublisher()
@@ -68,9 +68,9 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
       }
       .eraseToAnyPublisher()
     
-    let idlePublishers = Publishers.Merge(onAppear, emptySearch).eraseToAnyPublisher()
+    let searchPublishers = Publishers.Merge(emptySearch, onSearch).eraseToAnyPublisher()
         
-    return Publishers.MergeMany(idlePublishers, onSearch).eraseToAnyPublisher()
+    return Publishers.MergeMany(onAppear, searchPublishersce).eraseToAnyPublisher()
   }
 }
 

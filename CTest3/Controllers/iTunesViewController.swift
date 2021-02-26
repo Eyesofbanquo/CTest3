@@ -15,6 +15,8 @@ final class iTunesViewController: UIViewController {
   
   lazy var searchView: iTunesSearchViewControllerDelegate = iTunesSearchView()
   
+  lazy var searchBar: UISearchBar = createSearchBar()
+  
   let onAppear = PassthroughSubject<Void, Never>()
   
   let onSearch = PassthroughSubject<String, Never>()
@@ -34,6 +36,9 @@ final class iTunesViewController: UIViewController {
     
     self.view.backgroundColor = .systemBackground
     self.view.addSubview(searchView.view)
+    self.view.addSubview(searchBar)
+    
+    setupSearchBar()
     
     onAppear.send(())
   }
@@ -42,12 +47,15 @@ final class iTunesViewController: UIViewController {
     super.viewWillAppear(animated)
     
     NSLayoutConstraint.activate([
-                                  searchView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                                  searchView.view.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-                                  searchView.view.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor),
-                                  searchView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
-    
-    onSearch.send("Prince")
+      searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+      searchBar.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+      searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+      
+      searchView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+      searchView.view.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor),
+      searchView.view.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor),
+      searchView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+    ])
   }
   
   func bind(to viewModel: iTunesSearchTransformable) {
@@ -65,4 +73,30 @@ final class iTunesViewController: UIViewController {
         }
       }.store(in: &cancellables)
   }
+}
+
+extension iTunesViewController {
+  func createSearchBar() -> UISearchBar {
+    let bar = UISearchBar()
+    bar.translatesAutoresizingMaskIntoConstraints = false
+    bar.showsCancelButton = true
+    bar.barStyle = .default
+    return bar
+  }
+  
+  func setupSearchBar() {
+    searchBar.delegate = self
+  }
+}
+
+extension iTunesViewController: UISearchBarDelegate {
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    onSearch.send(searchText)
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    
+  }
+  
 }
