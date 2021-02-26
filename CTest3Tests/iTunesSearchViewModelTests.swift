@@ -23,10 +23,10 @@ class iTunesSearchViewModelTests: XCTestCase {
     
     let configuration = URLSessionConfiguration.ephemeral
     configuration.protocolClasses = [MockURLProtocol.self]
+    setupMockResponse()
     
     let urlSession = URLSession(configuration: configuration)
-//    network = Network(session: urlSession)
-    network = Network()
+    network = Network(session: urlSession)
     
     mockInput = .standard
     
@@ -73,7 +73,7 @@ class iTunesSearchViewModelTests: XCTestCase {
 
   }
   
-  func testSearchViewModel_resultsToIdle() {
+  func testSearchViewModel_searchToIdleState() {
     var ex: XCTestExpectation? = XCTestExpectation(description: "working...")
     
     var currentState: iTunesSearchState?
@@ -102,18 +102,6 @@ class iTunesSearchViewModelTests: XCTestCase {
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
     XCTAssertEqual(currentState, iTunesSearchState.idle)
     
-  }
-  
-  func testExample() throws {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-  }
-  
-  func testPerformanceExample() throws {
-    // This is an example of a performance test case.
-    self.measure {
-      // Put the code you want to measure the time of here.
-    }
   }
   
 }

@@ -25,6 +25,7 @@
 		336F024825E7A23C00DA124E /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024725E7A23C00DA124E /* MockURLProtocol.swift */; };
 		336F025025E7A28400DA124E /* iTunesSearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */; };
 		336F025525E7A37200DA124E /* MockInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F025425E7A37200DA124E /* MockInput.swift */; };
+		336F025A25E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F025925E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		336F024725E7A23C00DA124E /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModelTests.swift; sourceTree = "<group>"; };
 		336F025425E7A37200DA124E /* MockInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInput.swift; sourceTree = "<group>"; };
+		336F025925E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModelTestsMocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			children = (
 				336F024725E7A23C00DA124E /* MockURLProtocol.swift */,
 				336F025425E7A37200DA124E /* MockInput.swift */,
+				336F025925E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			files = (
 				336F025525E7A37200DA124E /* MockInput.swift in Sources */,
 				336F025025E7A28400DA124E /* iTunesSearchViewModelTests.swift in Sources */,
+				336F025A25E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift in Sources */,
 				336F01E025E5880E00DA124E /* CTest3Tests.swift in Sources */,
 				336F024825E7A23C00DA124E /* MockURLProtocol.swift in Sources */,
 			);

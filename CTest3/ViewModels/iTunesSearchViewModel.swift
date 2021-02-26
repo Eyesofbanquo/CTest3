@@ -15,7 +15,7 @@ struct Throwaway: Decodable {
 final class iTunesSearchViewModel: iTunesSearchTransformable {
   
   private var network: Network
-  
+    
   init(network: Network = Network()) {
     self.network = network
   }
@@ -24,6 +24,7 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
     
     let onAppear = input
       .onAppear
+      .receive(on: RunLoop.main)
       .map { _ -> iTunesSearchState in
       return .idle
     }
@@ -32,6 +33,7 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
     let emptySearch = input
       .onSearch
       .filter { $0.isEmpty }
+      .receive(on: RunLoop.main)
       .map { _ -> iTunesSearchState in
         return .idle
       }
@@ -40,7 +42,10 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
     
     let onSearch = input
       .onSearch
-      .filter { !$0.isEmpty }
+      .filter { value in
+        return !value.isEmpty
+      }
+      .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
       .compactMap { [weak self] value -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>? in
         return self?.network.request(forArtist: value)
       }
