@@ -14,7 +14,7 @@ import XCTest
 class iTunesSearchViewModelTests: XCTestCase {
   
   var sut: iTunesSearchViewModel!
-  var mockInput: MockInput!
+  var mockInput: iTunesSearchViewInput!
   var network: Network!
   var cancellables: Set<AnyCancellable>!
   
@@ -46,7 +46,7 @@ class iTunesSearchViewModelTests: XCTestCase {
       XCTAssertEqual(state, iTunesSearchState.idle)
     }.store(in: &cancellables)
     
-    MockInput.OnAppear.send(())
+    iTunesSearchViewInput.OnAppear.send(())
   }
   
   func testSearchViewModel_idleToSearchState() {
@@ -61,13 +61,13 @@ class iTunesSearchViewModelTests: XCTestCase {
       ex = nil
     }.store(in: &cancellables)
     
-    MockInput.OnAppear.send(())
+    iTunesSearchViewInput.OnAppear.send(())
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
     XCTAssertEqual(currentState, iTunesSearchState.idle)
 
     ex = XCTestExpectation(description: "working...")
     
-    MockInput.OnSearch.send("Prince")
+    iTunesSearchViewInput.OnSearch.send("Prince")
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
     XCTAssertEqual(currentState, iTunesSearchState.results(artists: []))
 
@@ -86,19 +86,19 @@ class iTunesSearchViewModelTests: XCTestCase {
       
     }.store(in: &cancellables)
     
-    MockInput.OnAppear.send(())
+    iTunesSearchViewInput.OnAppear.send(())
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
     XCTAssertEqual(currentState, iTunesSearchState.idle)
     
     ex = XCTestExpectation(description: "working...")
     
-    MockInput.OnSearch.send("Prince")
+    iTunesSearchViewInput.OnSearch.send("Prince")
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
     XCTAssertEqual(currentState, iTunesSearchState.results(artists: []))
     
     ex = XCTestExpectation(description: "working...")
     
-    MockInput.OnSearch.send("")
+    iTunesSearchViewInput.OnSearch.send("")
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
     XCTAssertEqual(currentState, iTunesSearchState.idle)
     

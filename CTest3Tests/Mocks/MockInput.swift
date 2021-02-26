@@ -10,7 +10,7 @@ import Foundation
 
 @testable import CTest3
 
-struct MockInput: iTunesSearchViewInput {
+struct MockInput {
   var onAppear: AnyPublisher<Void, Never>
   
   var onSearch: AnyPublisher<String, Never>
@@ -22,12 +22,12 @@ struct MockInput: iTunesSearchViewInput {
   
 }
 
-extension MockInput {
+extension iTunesSearchViewInput {
   static var OnAppear = PassthroughSubject<Void, Never>()
   static var OnSearch = PassthroughSubject<String, Never>()
   static var OnLiveSearch = PassthroughSubject<String, Never>()
   static var OnArtistSelection = PassthroughSubject<IndexPath, Never>()
-  static var standard: MockInput = MockInput(onAppear: Self.OnAppear.eraseToAnyPublisher(),
+  static var standard: iTunesSearchViewInput = iTunesSearchViewInput(onAppear: Self.OnAppear.eraseToAnyPublisher(),
                                              onSearch: Self.OnSearch.eraseToAnyPublisher(),
                                              onLiveSearch: Self.OnLiveSearch.eraseToAnyPublisher(),
                                              onArtistSelection: Self.OnArtistSelection.eraseToAnyPublisher())

@@ -8,14 +8,14 @@
 import Combine
 import Foundation
 
-protocol iTunesSearchViewInput {
+struct iTunesSearchViewInput {
   
-  var onAppear: AnyPublisher<Void, Never> { get set }
+  var onAppear: AnyPublisher<Void, Never>
   
-  var onSearch: AnyPublisher<String, Never> { get set }
+  var onSearch: AnyPublisher<String, Never>
   
-  var onLiveSearch: AnyPublisher<String, Never> { get set }
+  var onLiveSearch: AnyPublisher<String, Never>
   
-  var onArtistSelection: AnyPublisher<IndexPath, Never> { get set }
+  var onArtistSelection: AnyPublisher<IndexPath, Never> 
   
 }

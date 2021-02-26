@@ -26,6 +26,13 @@
 		336F025025E7A28400DA124E /* iTunesSearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */; };
 		336F025525E7A37200DA124E /* MockInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F025425E7A37200DA124E /* MockInput.swift */; };
 		336F025A25E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F025925E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift */; };
+		336F026225E8E84B00DA124E /* iTunesSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F026125E8E84B00DA124E /* iTunesSearchView.swift */; };
+		336F026725E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F026625E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift */; };
+		336F026C25E8ED7B00DA124E /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F026B25E8ED7B00DA124E /* ArtistTableViewCell.swift */; };
+		336F027225E8EDA600DA124E /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027125E8EDA600DA124E /* UITableViewCell+.swift */; };
+		336F027A25E8EE3400DA124E /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027925E8EE3400DA124E /* UILabel+.swift */; };
+		336F028025E8F0D200DA124E /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027F25E8F0D200DA124E /* ArtistSection.swift */; };
+		336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F028725E8F65900DA124E /* iTunesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +78,13 @@
 		336F024F25E7A28400DA124E /* iTunesSearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModelTests.swift; sourceTree = "<group>"; };
 		336F025425E7A37200DA124E /* MockInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInput.swift; sourceTree = "<group>"; };
 		336F025925E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewModelTestsMocks.swift; sourceTree = "<group>"; };
+		336F026125E8E84B00DA124E /* iTunesSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchView.swift; sourceTree = "<group>"; };
+		336F026625E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchViewControllerDelegate.swift; sourceTree = "<group>"; };
+		336F026B25E8ED7B00DA124E /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		336F027125E8EDA600DA124E /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
+		336F027925E8EE3400DA124E /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		336F027F25E8F0D200DA124E /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
+		336F028725E8F65900DA124E /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				336F01CC25E5880D00DA124E /* ViewController.swift */,
+				336F028725E8F65900DA124E /* iTunesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -174,6 +189,8 @@
 		336F01FD25E5A97B00DA124E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				336F026125E8E84B00DA124E /* iTunesSearchView.swift */,
+				336F026B25E8ED7B00DA124E /* ArtistTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +206,8 @@
 		336F01FF25E5A98B00DA124E /* need */ = {
 			isa = PBXGroup;
 			children = (
+				336F027E25E8F0C900DA124E /* table-section */,
+				336F027025E8ED8D00DA124E /* an-extension */,
 				336F023825E79CED00DA124E /* networking */,
 				336F021C25E5AF4D00DA124E /* state */,
 				336F020025E5A98F00DA124E /* an-interface */,
@@ -203,6 +222,7 @@
 				336F021225E5AE5800DA124E /* iTunesSearchViewInput.swift */,
 				336F021725E5AE6200DA124E /* iTunesSearchViewOutput.swift */,
 				336F022525E5B35700DA124E /* iTunesSearchUseCaseable.swift */,
+				336F026625E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift */,
 			);
 			path = "an-interface";
 			sourceTree = "<group>";
@@ -231,6 +251,23 @@
 				336F025925E8E64200DA124E /* iTunesSearchViewModelTestsMocks.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		336F027025E8ED8D00DA124E /* an-extension */ = {
+			isa = PBXGroup;
+			children = (
+				336F027125E8EDA600DA124E /* UITableViewCell+.swift */,
+				336F027925E8EE3400DA124E /* UILabel+.swift */,
+			);
+			path = "an-extension";
+			sourceTree = "<group>";
+		};
+		336F027E25E8F0C900DA124E /* table-section */ = {
+			isa = PBXGroup;
+			children = (
+				336F027F25E8F0D200DA124E /* ArtistSection.swift */,
+			);
+			path = "table-section";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,8 +401,15 @@
 			files = (
 				336F023A25E79CFA00DA124E /* Network.swift in Sources */,
 				336F021325E5AE5800DA124E /* iTunesSearchViewInput.swift in Sources */,
+				336F027A25E8EE3400DA124E /* UILabel+.swift in Sources */,
+				336F026225E8E84B00DA124E /* iTunesSearchView.swift in Sources */,
+				336F027225E8EDA600DA124E /* UITableViewCell+.swift in Sources */,
 				336F021825E5AE6200DA124E /* iTunesSearchViewOutput.swift in Sources */,
+				336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */,
 				336F021E25E5AF6200DA124E /* iTunesSearchState.swift in Sources */,
+				336F026725E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift in Sources */,
+				336F026C25E8ED7B00DA124E /* ArtistTableViewCell.swift in Sources */,
+				336F028025E8F0D200DA124E /* ArtistSection.swift in Sources */,
 				336F023425E5B92C00DA124E /* iTunesSearchViewModel.swift in Sources */,
 				336F022625E5B35700DA124E /* iTunesSearchUseCaseable.swift in Sources */,
 				336F020E25E5AE4B00DA124E /* ITunesSearchTransformable.swift in Sources */,
