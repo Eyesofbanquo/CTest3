@@ -64,7 +64,7 @@ extension ArtistTableViewCell {
     cell.artistNameLabel.text = artist.artistName
     cell.trackName.text = artist.trackName
     cell.primaryGenreName.text = artist.primaryGenreName
-    cell.trackPrice.text = "\(artist.trackPrice ?? "No price found.")"
+    cell.trackPrice.text = "\(artist.trackPrice ?? 0.0)"
     cell.releaseDate.text = artist.releaseDate
   }
 }

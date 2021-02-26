@@ -34,6 +34,10 @@ final class iTunesSearchView: UIView {
 
 extension iTunesSearchView: iTunesSearchViewControllerDelegate {
   
+  var view: UIView {
+    self
+  }
+  
   func setupTableView() -> UITableView {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     tableView.translatesAutoresizingMaskIntoConstraints = false

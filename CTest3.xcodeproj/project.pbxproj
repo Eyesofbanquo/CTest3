@@ -32,6 +32,7 @@
 		336F027225E8EDA600DA124E /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027125E8EDA600DA124E /* UITableViewCell+.swift */; };
 		336F027A25E8EE3400DA124E /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027925E8EE3400DA124E /* UILabel+.swift */; };
 		336F028025E8F0D200DA124E /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027F25E8F0D200DA124E /* ArtistSection.swift */; };
+		336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F028725E8F65900DA124E /* iTunesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		336F027125E8EDA600DA124E /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		336F027925E8EE3400DA124E /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		336F027F25E8F0D200DA124E /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
+		336F028725E8F65900DA124E /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				336F01CC25E5880D00DA124E /* ViewController.swift */,
+				336F028725E8F65900DA124E /* iTunesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				336F026225E8E84B00DA124E /* iTunesSearchView.swift in Sources */,
 				336F027225E8EDA600DA124E /* UITableViewCell+.swift in Sources */,
 				336F021825E5AE6200DA124E /* iTunesSearchViewOutput.swift in Sources */,
+				336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */,
 				336F021E25E5AF6200DA124E /* iTunesSearchState.swift in Sources */,
 				336F026725E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift in Sources */,
 				336F026C25E8ED7B00DA124E /* ArtistTableViewCell.swift in Sources */,
