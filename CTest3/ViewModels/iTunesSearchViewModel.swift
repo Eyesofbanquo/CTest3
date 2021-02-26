@@ -22,15 +22,30 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
   
   func transform(input: iTunesSearchViewInput) -> ITunesSearchViewOutput {
     
-    let onAppear = input.onAppear.map { _ -> iTunesSearchState in
+    let onAppear = input
+      .onAppear
+      .map { _ -> iTunesSearchState in
       return .idle
-    }.receive(on: RunLoop.main).eraseToAnyPublisher()
+    }
+      .receive(on: RunLoop.main).eraseToAnyPublisher()
     
-    let onSearch = input.onSearch
+    let emptySearch = input
+      .onSearch
+      .filter { $0.isEmpty }
+      .map { _ -> iTunesSearchState in
+        return .idle
+      }
+      .receive(on: RunLoop.main)
+      .eraseToAnyPublisher()
+    
+    let onSearch = input
+      .onSearch
+      .filter { !$0.isEmpty }
       .compactMap { [weak self] value -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>? in
         return self?.network.request(forArtist: value)
       }
       .switchToLatest()
+      
       .tryMap { element -> Data in
         guard let httpResponse = element.response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
@@ -38,15 +53,22 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
         }
         return element.data
       }
+      
       .receive(on: DispatchQueue.main)
       .decode(type: ArtistResult.self, decoder: JSONDecoder())
+      .replaceError(with: ArtistResult(resultCount: 0, results: []))
       .map { decodedResponse -> iTunesSearchState in
         let artists = decodedResponse.results
         return .results(artists: artists)
       }
-      .replaceError(with: .error(error: NSError()))
       .eraseToAnyPublisher()
+    
+    let idlePublishers = Publishers.Merge(onAppear, emptySearch).eraseToAnyPublisher()
         
-    return Publishers.MergeMany(onAppear, onSearch).eraseToAnyPublisher()
+    return Publishers.MergeMany(idlePublishers, onSearch).eraseToAnyPublisher()
   }
+}
+
+enum AError: Error {
+  case no
 }

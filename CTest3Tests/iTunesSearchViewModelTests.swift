@@ -73,6 +73,37 @@ class iTunesSearchViewModelTests: XCTestCase {
 
   }
   
+  func testSearchViewModel_resultsToIdle() {
+    var ex: XCTestExpectation? = XCTestExpectation(description: "working...")
+    
+    var currentState: iTunesSearchState?
+    XCTAssertNil(currentState)
+    
+    sut.transform(input: mockInput).sink { state in
+      currentState = state
+      ex?.fulfill()
+      ex = nil
+      
+    }.store(in: &cancellables)
+    
+    MockInput.OnAppear.send(())
+    _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
+    XCTAssertEqual(currentState, iTunesSearchState.idle)
+    
+    ex = XCTestExpectation(description: "working...")
+    
+    MockInput.OnSearch.send("Prince")
+    _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
+    XCTAssertEqual(currentState, iTunesSearchState.results(artists: []))
+    
+    ex = XCTestExpectation(description: "working...")
+    
+    MockInput.OnSearch.send("")
+    _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
+    XCTAssertEqual(currentState, iTunesSearchState.idle)
+    
+  }
+  
   func testExample() throws {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
