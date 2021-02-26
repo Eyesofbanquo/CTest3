@@ -33,29 +33,40 @@ extension ArtistTableViewCell {
   
   func setupViews() {
     
+    trackPrice.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    trackPrice.setContentCompressionResistancePriority(.required, for: .horizontal)
+    
+    artistNameLabel.numberOfLines = 2
+    artistNameLabel.lineBreakMode = .byTruncatingTail
+    
+    let mainStackView = UIStackView()
+    mainStackView.translatesAutoresizingMaskIntoConstraints = false
+    mainStackView.axis = .horizontal
+    mainStackView.spacing = 8.0
+    mainStackView.distribution = .fill
+    mainStackView.alignment = .top
+    
     let stackView = UIStackView()
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .vertical
-    stackView.spacing = 8.0
     stackView.distribution = .fill
-    stackView.alignment = .firstBaseline
-    
+    stackView.alignment = .fill
+        
     stackView.addArrangedSubview(artistNameLabel)
     stackView.addArrangedSubview(trackName)
     stackView.addArrangedSubview(releaseDate)
     stackView.addArrangedSubview(primaryGenreName)
-    
-    self.addSubview(trackPrice)
-    self.addSubview(stackView)
+        
+    mainStackView.addArrangedSubview(stackView)
+    mainStackView.addArrangedSubview(trackPrice)
+    self.addSubview(mainStackView)
 
     
     NSLayoutConstraint.activate([
-                                  trackPrice.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-                                  trackPrice.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-                                  stackView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-                                  stackView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-                                  stackView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
-                                  stackView.trailingAnchor.constraint(equalTo: trackPrice.leadingAnchor)])
+                                  mainStackView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+                                  mainStackView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+                                  mainStackView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
+                                  mainStackView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor)])
   }
 }
 
@@ -64,7 +75,7 @@ extension ArtistTableViewCell {
     cell.artistNameLabel.text = artist.artistName
     cell.trackName.text = artist.trackName
     cell.primaryGenreName.text = artist.primaryGenreName
-    cell.trackPrice.text = "\(artist.trackPrice ?? 0.0)"
+    cell.trackPrice.text = "$\(artist.trackPrice ?? 00.00)"
     cell.releaseDate.text = artist.releaseDate
   }
 }

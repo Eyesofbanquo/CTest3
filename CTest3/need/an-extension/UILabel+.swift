@@ -14,6 +14,8 @@ extension UILabel {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .label
+//    label.numberOfLines = 0
+    label.lineBreakMode = .byWordWrapping
     return label
   }
   
