@@ -10,5 +10,5 @@ import Foundation
 
 protocol iTunesSearchUseCaseable: AnyObject {
   
-  func searchArtists(usingName name: String) -> AnyPublisher<Result<[String], Error>, Never>
+  func searchArtists(usingName name: String) -> AnyPublisher<Result<[Artist], Error>, Never>
 }
