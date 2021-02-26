@@ -12,7 +12,7 @@ struct ArtistResult: Decodable {
   var results: [Artist]
 }
 
-struct Artist: Decodable {
+struct Artist: Decodable, Hashable {
   var artistName: String?
   var trackName: String?
   var releaseDate: String?
