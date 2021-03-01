@@ -33,6 +33,7 @@
 		336F027A25E8EE3400DA124E /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027925E8EE3400DA124E /* UILabel+.swift */; };
 		336F028025E8F0D200DA124E /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027F25E8F0D200DA124E /* ArtistSection.swift */; };
 		336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F028725E8F65900DA124E /* iTunesViewController.swift */; };
+		336F029B25E9B3F400DA124E /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F029A25E9B3F400DA124E /* SpinnerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		336F027925E8EE3400DA124E /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		336F027F25E8F0D200DA124E /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		336F028725E8F65900DA124E /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
+		336F029A25E9B3F400DA124E /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				336F026125E8E84B00DA124E /* iTunesSearchView.swift */,
 				336F026B25E8ED7B00DA124E /* ArtistTableViewCell.swift */,
+				336F029A25E9B3F400DA124E /* SpinnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */,
 				336F021E25E5AF6200DA124E /* iTunesSearchState.swift in Sources */,
 				336F026725E8E8B700DA124E /* iTunesSearchViewControllerDelegate.swift in Sources */,
+				336F029B25E9B3F400DA124E /* SpinnerView.swift in Sources */,
 				336F026C25E8ED7B00DA124E /* ArtistTableViewCell.swift in Sources */,
 				336F028025E8F0D200DA124E /* ArtistSection.swift in Sources */,
 				336F023425E5B92C00DA124E /* iTunesSearchViewModel.swift in Sources */,

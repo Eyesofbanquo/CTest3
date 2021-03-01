@@ -13,6 +13,13 @@ struct ArtistResult: Decodable {
 }
 
 struct Artist: Decodable, Hashable {
+  static func ==(lhs: Artist, rhs: Artist) -> Bool {
+    
+    return lhs.id == rhs.id
+  }
+  
+//  var id: String?
+  var id: String
   var artistName: String?
   var trackName: String?
   var releaseDate: String?
@@ -23,7 +30,8 @@ struct Artist: Decodable, Hashable {
     case resultCount, results
   }
   enum CodingKeys: String, CodingKey {
-    case artistName, trackName, releaseDate, primaryGenreName, trackPrice
+//    case id = "artistId"
+    case artistName, trackName, releaseDate, primaryGenreName, trackPrice, collectionId
   }
 }
 
@@ -36,5 +44,6 @@ extension Artist {
     self.releaseDate = try resultsContainer.decodeIfPresent(String.self, forKey: .releaseDate)
     self.primaryGenreName = try resultsContainer.decodeIfPresent(String.self, forKey: .primaryGenreName)
     self.trackPrice = try resultsContainer.decodeIfPresent(Double.self, forKey: .trackPrice)
+    self.id = UUID().uuidString
   }
 }

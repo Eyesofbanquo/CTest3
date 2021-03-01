@@ -14,5 +14,8 @@ protocol iTunesSearchViewControllerDelegate: AnyObject {
   
   func updateTable(artists: [Artist], animated: Bool)
   
+  func searchBegan()
+  
+  func searchFinished()
   
 }

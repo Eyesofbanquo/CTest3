@@ -14,11 +14,15 @@ final class iTunesSearchView: UIView {
   
   lazy var dataSource: UITableViewDiffableDataSource<iTunesSearchViewSection, Artist> = makeDataSource()
   
+  lazy var spinner: SpinnerView = SpinnerView()
+  
   init() {
     super.init(frame: .zero)
     
     self.addSubview(tableView)
     setupTableViewDataSource()
+    
+    spinner.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
   }
   
   override func layoutSubviews() {
@@ -44,6 +48,7 @@ extension iTunesSearchView: iTunesSearchViewControllerDelegate {
     tableView.translatesAutoresizingMaskIntoConstraints = false
     
     tableView.register(ArtistTableViewCell.self, forCellReuseIdentifier: ArtistTableViewCell.reuseIdentifier)
+    tableView.tableHeaderView = spinner
     
     return tableView
   }
@@ -79,5 +84,13 @@ extension iTunesSearchView: iTunesSearchViewControllerDelegate {
     snapshot.appendItems(artists, toSection: .artists)
     
     dataSource.apply(snapshot, animatingDifferences: animated)
+  }
+  
+  func searchBegan() {
+    spinner.activityIndicator.startAnimating()
+  }
+  
+  func searchFinished() {
+    spinner.activityIndicator.stopAnimating()
   }
 }

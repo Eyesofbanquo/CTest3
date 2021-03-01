@@ -100,7 +100,7 @@ class iTunesSearchViewModelTests: XCTestCase {
     
     iTunesSearchViewInput.OnSearch.send("")
     _ = XCTWaiter.wait(for: [ex!], timeout: 1.0)
-    XCTAssertEqual(currentState, iTunesSearchState.idle)
+    XCTAssertEqual(currentState, iTunesSearchState.results(artists: []))
     
   }
   
