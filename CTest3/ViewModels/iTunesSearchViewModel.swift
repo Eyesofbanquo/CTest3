@@ -8,9 +8,21 @@
 import Combine
 import Foundation
 
-struct Throwaway: Decodable {
-  var name: String
-}
+
+let dateFormatterFromUTC: DateFormatter = {
+  let dateFormatterFromUTC = DateFormatter()
+  dateFormatterFromUTC.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+  dateFormatterFromUTC.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+  return dateFormatterFromUTC
+}()
+
+
+let dateFormatterReadable: DateFormatter = {
+  let dateFormatterReadable = DateFormatter()
+  dateFormatterReadable.dateFormat = "EEE, MMM d, yyyy - h:mm a"
+  dateFormatterReadable.timeZone = NSTimeZone.local
+  return dateFormatterReadable
+}()
 
 final class iTunesSearchViewModel: iTunesSearchTransformable {
   
@@ -64,7 +76,18 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
       .replaceError(with: ArtistResult(resultCount: 0, results: []))
       .map { decodedResponse -> iTunesSearchState in
         let artists = decodedResponse.results
-        return .results(artists: artists)
+        let artistsWithReadableDate = artists.map { oldArtist -> Artist in
+          var newArtist = oldArtist
+          
+          guard let dateString = newArtist.releaseDate, let date = dateFormatterFromUTC.date(from: dateString) else { return oldArtist }
+          
+          let readableDate = dateFormatterReadable.string(from: date)
+          newArtist.releaseDate = readableDate
+          return newArtist
+        }
+        
+        print(artistsWithReadableDate.map { $0.releaseDate })
+        return .results(artists: artistsWithReadableDate)
       }
       .eraseToAnyPublisher()
     
