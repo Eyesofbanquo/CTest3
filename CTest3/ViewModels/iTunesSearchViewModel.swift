@@ -8,28 +8,14 @@
 import Combine
 import Foundation
 
-
-let dateFormatterFromUTC: DateFormatter = {
-  let dateFormatterFromUTC = DateFormatter()
-  dateFormatterFromUTC.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-  dateFormatterFromUTC.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-  return dateFormatterFromUTC
-}()
-
-
-let dateFormatterReadable: DateFormatter = {
-  let dateFormatterReadable = DateFormatter()
-  dateFormatterReadable.dateFormat = "EEE, MMM d, yyyy - h:mm a"
-  dateFormatterReadable.timeZone = NSTimeZone.local
-  return dateFormatterReadable
-}()
-
 final class iTunesSearchViewModel: iTunesSearchTransformable {
   
   private var network: Network
+  private var dateFormatter: UTCFormatter
     
-  init(network: Network = Network()) {
+  init(network: Network = Network(), dateFormatter: UTCFormatter = UTCFormatter()) {
     self.network = network
+    self.dateFormatter = dateFormatter
   }
   
   func transform(input: iTunesSearchViewInput) -> ITunesSearchViewOutput {
@@ -74,19 +60,17 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
       .receive(on: DispatchQueue.main)
       .decode(type: ArtistResult.self, decoder: JSONDecoder())
       .replaceError(with: ArtistResult(resultCount: 0, results: []))
-      .map { decodedResponse -> iTunesSearchState in
+      .map { [weak self] decodedResponse -> iTunesSearchState in
         let artists = decodedResponse.results
         let artistsWithReadableDate = artists.map { oldArtist -> Artist in
           var newArtist = oldArtist
-          
-          guard let dateString = newArtist.releaseDate, let date = dateFormatterFromUTC.date(from: dateString) else { return oldArtist }
-          
-          let readableDate = dateFormatterReadable.string(from: date)
-          newArtist.releaseDate = readableDate
+                    
+          let dateObject = self?.dateFormatter.convertToDate(from: newArtist.releaseDate)
+          let dateString = self?.dateFormatter.convertToString(from: dateObject)
+          newArtist.releaseDate = dateString
           return newArtist
         }
         
-        print(artistsWithReadableDate.map { $0.releaseDate })
         return .results(artists: artistsWithReadableDate)
       }
       .eraseToAnyPublisher()
