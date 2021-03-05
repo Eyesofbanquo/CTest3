@@ -8,16 +8,14 @@
 import Combine
 import Foundation
 
-struct Throwaway: Decodable {
-  var name: String
-}
-
 final class iTunesSearchViewModel: iTunesSearchTransformable {
   
   private var network: Network
+  private var dateFormatter: UTCFormatter
     
-  init(network: Network = Network()) {
+  init(network: Network = Network(), dateFormatter: UTCFormatter = UTCFormatter()) {
     self.network = network
+    self.dateFormatter = dateFormatter
   }
   
   func transform(input: iTunesSearchViewInput) -> ITunesSearchViewOutput {
@@ -62,9 +60,18 @@ final class iTunesSearchViewModel: iTunesSearchTransformable {
       .receive(on: DispatchQueue.main)
       .decode(type: ArtistResult.self, decoder: JSONDecoder())
       .replaceError(with: ArtistResult(resultCount: 0, results: []))
-      .map { decodedResponse -> iTunesSearchState in
+      .map { [weak self] decodedResponse -> iTunesSearchState in
         let artists = decodedResponse.results
-        return .results(artists: artists)
+        let artistsWithReadableDate = artists.map { oldArtist -> Artist in
+          var newArtist = oldArtist
+                    
+          let dateObject = self?.dateFormatter.convertToDate(from: newArtist.releaseDate)
+          let dateString = self?.dateFormatter.convertToString(from: dateObject)
+          newArtist.releaseDate = dateString
+          return newArtist
+        }
+        
+        return .results(artists: artistsWithReadableDate)
       }
       .eraseToAnyPublisher()
     

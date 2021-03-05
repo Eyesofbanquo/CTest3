@@ -34,6 +34,7 @@
 		336F028025E8F0D200DA124E /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F027F25E8F0D200DA124E /* ArtistSection.swift */; };
 		336F028825E8F65900DA124E /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F028725E8F65900DA124E /* iTunesViewController.swift */; };
 		336F029B25E9B3F400DA124E /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F029A25E9B3F400DA124E /* SpinnerView.swift */; };
+		336F02A425EDC9B700DA124E /* UTCDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F02A325EDC9B700DA124E /* UTCDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		336F027F25E8F0D200DA124E /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		336F028725E8F65900DA124E /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
 		336F029A25E9B3F400DA124E /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		336F02A325EDC9B700DA124E /* UTCDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTCDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 		336F01FF25E5A98B00DA124E /* need */ = {
 			isa = PBXGroup;
 			children = (
+				336F02A225EDC99B00DA124E /* Formatter */,
 				336F027E25E8F0C900DA124E /* table-section */,
 				336F027025E8ED8D00DA124E /* an-extension */,
 				336F023825E79CED00DA124E /* networking */,
@@ -271,6 +274,14 @@
 				336F027F25E8F0D200DA124E /* ArtistSection.swift */,
 			);
 			path = "table-section";
+			sourceTree = "<group>";
+		};
+		336F02A225EDC99B00DA124E /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				336F02A325EDC9B700DA124E /* UTCDateFormatter.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +428,7 @@
 				336F023425E5B92C00DA124E /* iTunesSearchViewModel.swift in Sources */,
 				336F022625E5B35700DA124E /* iTunesSearchUseCaseable.swift in Sources */,
 				336F020E25E5AE4B00DA124E /* ITunesSearchTransformable.swift in Sources */,
+				336F02A425EDC9B700DA124E /* UTCDateFormatter.swift in Sources */,
 				336F01CD25E5880D00DA124E /* ViewController.swift in Sources */,
 				336F01C925E5880D00DA124E /* AppDelegate.swift in Sources */,
 				336F01CB25E5880D00DA124E /* SceneDelegate.swift in Sources */,
